@@ -5,12 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Abhishek Mani Tripathi | Content Strategist</title>
     
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Anek+Devanagari:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
         :root {
-            --bg-dark: #0f172a;
+            --bg-dark: #0a0f1c; 
             --card-bg: #1e293b;
             --text-main: #f8fafc;
             --text-muted: #94a3b8;
@@ -19,7 +19,7 @@
             --transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Plus Jakarta Sans', sans-serif; }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Anek Devanagari', sans-serif; }
         
         body {
             background-color: var(--bg-dark);
@@ -32,7 +32,7 @@
 
         .portfolio-wrapper { max-width: 1200px; width: 100%; }
 
-        /* Bento Grid Layout */
+        /* PERFECT BENTO GRID */
         .bento-grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
@@ -42,17 +42,21 @@
 
         /* Reusable Card Style */
         .bento-card {
-            background: var(--card-bg);
             border-radius: 24px;
             padding: 30px;
             border: 1px solid rgba(255,255,255,0.05);
             transition: var(--transition);
             position: relative;
             overflow: hidden;
-            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            display: flex;
+            flex-direction: column;
         }
         
-        .bento-card:hover {
+        .interactive-card {
+            cursor: pointer;
+        }
+        .interactive-card:hover {
             transform: translateY(-5px);
             border-color: var(--accent);
             box-shadow: 0 10px 30px var(--accent-glow);
@@ -62,8 +66,8 @@
             position: absolute;
             top: 20px;
             right: 20px;
-            background: rgba(56, 189, 248, 0.1);
-            color: var(--accent);
+            background: rgba(255, 255, 255, 0.1);
+            color: #fff;
             padding: 5px 12px;
             border-radius: 20px;
             font-size: 0.75em;
@@ -71,104 +75,123 @@
             opacity: 0;
             transition: var(--transition);
         }
-        .bento-card:hover .click-hint { opacity: 1; }
+        .interactive-card:hover .click-hint { opacity: 1; }
 
-        /* Specific Grid Placements */
-        .profile-card { grid-column: span 2; grid-row: span 2; display: flex; flex-direction: column; justify-content: center; cursor: default; }
-        .profile-card:hover { transform: none; box-shadow: none; border-color: rgba(255,255,255,0.05); }
+        /* --- FIXED SYMMETRICAL PLACEMENTS --- */
         
-        .exp-card-1 { grid-column: span 2; grid-row: span 1; background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%); }
-        .exp-card-2 { grid-column: span 1; grid-row: span 1; }
-        .exp-card-3 { grid-column: span 1; grid-row: span 1; }
-        .skills-card { grid-column: span 4; display: flex; flex-wrap: wrap; gap: 10px; align-items: center; justify-content: center; cursor: default;}
+        /* Profile Card - Full Width */
+        .profile-card { 
+            grid-column: span 4; 
+            flex-direction: row;
+            align-items: center;
+            gap: 30px;
+            background: linear-gradient(135deg, #111827 0%, #1e1b4b 100%);
+            border-top: 4px solid #818cf8;
+        }
+        .profile-img { width: 160px; height: 160px; border-radius: 50%; object-fit: cover; border: 4px solid #818cf8; flex-shrink: 0;}
+        .profile-info { flex: 1; }
         
-        /* Profile Details */
-        .profile-img { width: 120px; height: 120px; border-radius: 50%; object-fit: cover; border: 3px solid var(--accent); margin-bottom: 20px; }
+        /* ALL Experience Cards now span 2 columns for a perfect 2x3 Grid */
+        .exp-card-1 { grid-column: span 2; background: linear-gradient(135deg, #0f172a 0%, #064e3b 100%); border-top: 4px solid #10b981; } /* CMO */
+        .exp-card-2 { grid-column: span 2; background: linear-gradient(135deg, #1e293b 0%, #7f1d1d 100%); border-top: 4px solid #f87171; } /* Lok Sabha */
+        .exp-card-4 { grid-column: span 2; background: linear-gradient(135deg, #1e293b 0%, #9a3412 100%); border-top: 4px solid #f59e0b; } /* Bihar */
+        .exp-card-5 { grid-column: span 2; background: linear-gradient(135deg, #1e293b 0%, #0891b2 100%); border-top: 4px solid #06b6d4; } /* Delhi */
+        .exp-card-6 { grid-column: span 2; background: linear-gradient(135deg, #1e293b 0%, #be185d 100%); border-top: 4px solid #ec4899; } /* Jharkhand */
+        .exp-card-3 { grid-column: span 2; background: linear-gradient(135deg, #1e293b 0%, #1e3a8a 100%); border-top: 4px solid #60a5fa; } /* MP */
+        
+        /* Education & Skills - Full Width */
+        .edu-card { grid-column: span 4; background: linear-gradient(135deg, #2e1065 0%, #4c1d95 100%); border-left: 6px solid #c084fc; }
+        .edu-flex { display: flex; gap: 20px; margin-top: 15px; }
+        .edu-item { background: rgba(0,0,0,0.2); padding: 20px; border-radius: 16px; border: 1px solid rgba(255,255,255,0.05); flex: 1;}
+        .edu-degree { font-size: 1.15em; font-weight: 700; color: #fff; }
+        .edu-uni { color: #c084fc; font-size: 0.9em; font-weight: 600; margin-top: 5px; margin-bottom: 8px;}
+        .edu-desc { font-size: 0.85em; color: rgba(255,255,255,0.8); line-height: 1.6; text-align: justify;}
+        
+        .skills-card { grid-column: span 4; background: #1e293b; }
+        .skills-container { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 20px; justify-content: center; }
+        
+        .skill-pill { 
+            background: rgba(255,255,255,0.05); color: #e2e8f0; padding: 12px 24px; border-radius: 30px; 
+            font-size: 0.95em; font-weight: 500; border: 1px solid rgba(255,255,255,0.1); 
+            position: relative; cursor: help; transition: var(--transition);
+        }
+        .skill-pill.highlight { background: rgba(56, 189, 248, 0.1); color: var(--accent); border-color: var(--accent); }
+        .skill-pill:hover { background: rgba(255,255,255,0.1); transform: translateY(-2px); }
+
+        .skill-tooltip {
+            visibility: hidden; width: 280px; background: #0f172a; color: #f8fafc;
+            text-align: left; border-radius: 12px; padding: 15px; position: absolute;
+            z-index: 10; bottom: 130%; left: 50%; transform: translateX(-50%);
+            opacity: 0; transition: opacity 0.3s ease, bottom 0.3s ease;
+            font-size: 0.85em; font-weight: 400; line-height: 1.5;
+            border: 1px solid var(--accent); box-shadow: 0 10px 25px rgba(0,0,0,0.5); pointer-events: none;
+        }
+        .skill-tooltip::after {
+            content: ""; position: absolute; top: 100%; left: 50%; margin-left: -8px;
+            border-width: 8px; border-style: solid; border-color: var(--accent) transparent transparent transparent;
+        }
+        .skill-pill:hover .skill-tooltip { visibility: visible; opacity: 1; bottom: 140%; }
+
+        /* Text Styles */
         .name { font-size: 2.5em; font-weight: 800; line-height: 1.1; margin-bottom: 5px; }
         .role { color: var(--accent); font-weight: 600; font-size: 1.2em; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 15px; }
         .bio { color: var(--text-muted); font-size: 0.95em; text-align: justify; }
-        
         .contact-links { display: flex; gap: 15px; margin-top: 20px; flex-wrap: wrap; }
         .contact-links span { background: rgba(255,255,255,0.05); padding: 8px 15px; border-radius: 8px; font-size: 0.85em; display: flex; align-items: center; gap: 8px; }
 
-        /* DOWNLOAD BUTTON STYLES */
-        .btn-download {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            background: var(--accent);
-            color: var(--bg-dark);
-            padding: 14px 28px;
-            border-radius: 30px;
-            font-weight: 700;
-            text-decoration: none;
-            font-size: 0.95em;
-            margin-top: 30px;
-            transition: var(--transition);
-            box-shadow: 0 5px 20px var(--accent-glow);
-            width: fit-content;
-        }
-        .btn-download:hover {
-            transform: translateY(-3px);
-            background: #ffffff;
-            box-shadow: 0 10px 25px var(--accent-glow);
-        }
+        .section-header { font-size: 1.4em; font-weight: 800; color: #fff; margin-bottom: 5px; display: flex; align-items: center; gap: 10px; width: 100%;}
+        .card-title { font-size: 1.35em; font-weight: 700; margin-bottom: 5px; color: #fff; }
+        .card-subtitle { font-size: 0.9em; color: rgba(255,255,255,0.8); margin-bottom: 15px; font-weight: 500; }
+        .card-desc { font-size: 0.95em; color: rgba(255,255,255,0.7); display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; line-height: 1.5;}
 
-        /* Experience Titles inside cards */
-        .card-title { font-size: 1.3em; font-weight: 700; margin-bottom: 5px; color: #fff; }
-        .card-subtitle { font-size: 0.9em; color: var(--accent); margin-bottom: 15px; font-weight: 500; }
-        .card-desc { font-size: 0.9em; color: var(--text-muted); display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
-
-        /* Skill Pills */
-        .skill-pill { background: rgba(255,255,255,0.05); color: #e2e8f0; padding: 10px 20px; border-radius: 30px; font-size: 0.9em; font-weight: 500; border: 1px solid rgba(255,255,255,0.1); }
-        .skill-pill.highlight { background: rgba(56, 189, 248, 0.1); color: var(--accent); border-color: var(--accent); }
-
-        /* Modal (Popup) Styles */
+        /* Modal Styles */
         .modal-overlay {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0, 0, 0, 0.8);
-            backdrop-filter: blur(8px);
+            background: rgba(0, 0, 0, 0.8); backdrop-filter: blur(8px);
             display: flex; justify-content: center; align-items: center;
-            z-index: 1000;
-            opacity: 0; visibility: hidden;
-            transition: var(--transition);
+            z-index: 1000; opacity: 0; visibility: hidden; transition: var(--transition);
         }
         .modal-overlay.active { opacity: 1; visibility: visible; }
         
         .modal-content {
-            background: #1e293b;
-            width: 90%; max-width: 700px;
-            border-radius: 24px; padding: 40px;
-            position: relative;
-            transform: translateY(50px) scale(0.9);
-            transition: var(--transition);
-            border: 1px solid rgba(255,255,255,0.1);
-            box-shadow: 0 25px 50px rgba(0,0,0,0.5);
-            max-height: 90vh;
-            overflow-y: auto;
+            background: #1e293b; width: 90%; max-width: 750px;
+            border-radius: 24px; padding: 40px; position: relative;
+            transform: translateY(50px) scale(0.9); transition: var(--transition);
+            border: 1px solid rgba(255,255,255,0.1); box-shadow: 0 25px 50px rgba(0,0,0,0.5);
+            max-height: 90vh; overflow-y: auto;
         }
         .modal-overlay.active .modal-content { transform: translateY(0) scale(1); }
         
         .close-btn {
-            position: absolute; top: 20px; right: 25px;
-            background: transparent; border: none;
-            color: var(--text-muted); font-size: 1.5em; cursor: pointer;
-            transition: 0.3s;
+            position: absolute; top: 20px; right: 25px; background: transparent; border: none;
+            color: var(--text-muted); font-size: 1.5em; cursor: pointer; transition: 0.3s;
         }
         .close-btn:hover { color: #fff; transform: rotate(90deg); }
 
         .modal-header h3 { font-size: 1.8em; color: #fff; margin-bottom: 5px; }
         .modal-header p { color: var(--accent); font-weight: 600; margin-bottom: 25px; }
         
-        /* The "Strategist" Breakdown inside Modal */
-        .strategy-section { margin-bottom: 20px; }
-        .strategy-section h4 { color: #fff; display: flex; align-items: center; gap: 10px; margin-bottom: 10px; font-size: 1.1em; }
-        .strategy-section h4 i { color: var(--accent); }
+        .strategy-section { margin-bottom: 25px; }
+        .strategy-section h4 { color: #fff; display: flex; align-items: center; gap: 10px; margin-bottom: 15px; font-size: 1.2em; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 10px;}
         .strategy-section p { color: var(--text-muted); font-size: 0.95em; line-height: 1.7; text-align: justify; }
+
+        .campaign-item {
+            background: rgba(0, 0, 0, 0.2); border-left: 4px solid var(--accent);
+            padding: 15px 20px; margin-bottom: 15px; border-radius: 0 12px 12px 0;
+            transition: background 0.3s ease;
+        }
+        .campaign-item:hover { background: rgba(255, 255, 255, 0.03); }
+        .campaign-item h5 { color: #fff; font-size: 1.1em; margin-bottom: 8px; display: flex; align-items: center; gap: 10px; }
+        .campaign-item p { color: rgba(255,255,255,0.7); font-size: 0.95em; margin: 0; line-height: 1.6; text-align: justify;}
 
         @media (max-width: 900px) {
             .bento-grid { grid-template-columns: 1fr; }
-            .profile-card, .exp-card-1, .exp-card-2, .exp-card-3, .skills-card { grid-column: span 1; }
+            .profile-card, .exp-card-1, .exp-card-2, .exp-card-3, .exp-card-4, .exp-card-5, .exp-card-6, .skills-card, .edu-card { grid-column: span 1; }
+            .profile-card { flex-direction: column; text-align: center; }
+            .contact-links { justify-content: center; }
+            .edu-flex { flex-direction: column; }
+            .skill-tooltip { display: none; }
+            .modal-content { padding: 30px 20px; }
         }
     </style>
 </head>
@@ -179,49 +202,100 @@
         
         <div class="bento-card profile-card">
             <img src="https://i.ibb.co/cKrvWrff/Passport-Size-1.jpg" alt="Abhishek Mani Tripathi" class="profile-img">
-            <h1 class="name">Abhishek Mani Tripathi</h1>
-            <h2 class="role">Content Strategist & Political Communicator</h2>
-            <p class="bio">A strategic, research-focused Content Professional bringing over four years of expertise in SEO-optimized digital content creation, political communications, and brand-centric storytelling. Highly skilled at converting complex subjects into clear, persuasive, and influential materials that align perfectly with core organizational objectives.</p>
-            <div class="contact-links">
-                <span><i class="fas fa-phone"></i> +91-9506069477</span>
-                <span><i class="fas fa-envelope"></i> stambhabhishek@gmail.com</span>
+            <div class="profile-info">
+                <h1 class="name">Abhishek Mani Tripathi</h1>
+                <h2 class="role">Content Strategist & Political Communicator</h2>
+                <p class="bio">A strategic, research-focused Content Professional bringing over four years of expertise in SEO-optimized digital content creation, political communications, and brand-centric storytelling. Highly skilled at converting complex subjects into clear, persuasive, and influential materials that align perfectly with core organizational objectives.</p>
+                <div class="contact-links">
+                    <span><i class="fas fa-phone"></i> +91-9506069477</span>
+                    <span><i class="fas fa-envelope"></i> stambhabhishek@gmail.com</span>
+                </div>
             </div>
-            
-            <a href="resume.pdf" download="Abhishek_Mani_Tripathi_CV.pdf" class="btn-download">
-                <i class="fas fa-cloud-download-alt"></i> Download Resume
-            </a>
         </div>
 
-        <div class="bento-card exp-card-1" onclick="openModal('modal-cmo')">
-            <div class="click-hint">Click to read Case Study <i class="fas fa-arrow-right"></i></div>
-            <h3 class="card-title">Content Strategist (CMO Support)</h3>
+        <div class="bento-card exp-card-1 interactive-card" onclick="openModal('modal-cmo')">
+            <div class="click-hint">Case Study <i class="fas fa-arrow-right"></i></div>
+            <h3 class="card-title">Content Strategist (CMO)</h3>
             <p class="card-subtitle">Auburn Digital Solutions | 2025 - Present</p>
-            <p class="card-desc">Presently serving as a Content Strategist providing support to the Uttar Pradesh Chief Minister's Office. In this role, I have crafted structured, impact-oriented communication strategies tailored to governance priorities...</p>
+            <p class="card-desc">Presently serving as a Content Strategist providing support to the Uttar Pradesh Chief Minister's Office. Crafted structured, impact-oriented communication strategies tailored to governance priorities, managing large-scale public narratives.</p>
         </div>
 
-        <div class="bento-card exp-card-2" onclick="openModal('modal-ls')">
-            <div class="click-hint">Click to view <i class="fas fa-expand"></i></div>
-            <h3 class="card-title">Lok Sabha Election 2024</h3>
-            <p class="card-subtitle">Strategic Communication | Delhi</p>
-            <p class="card-desc">Delivered comprehensive content and communication assistance for prominent leaders. Authored impactful campaign speeches, targeted constituency messaging, and highly engaging social media campaigns...</p>
+        <div class="bento-card exp-card-2 interactive-card" onclick="openModal('modal-ls')">
+            <div class="click-hint">View Impact <i class="fas fa-expand"></i></div>
+            <h3 class="card-title">Lok Sabha Elections 2024</h3>
+            <p class="card-subtitle">National Strategic Communication</p>
+            <p class="card-desc">Spearheaded the historic campaign for Yogender Chandoliya achieving the highest winning margin. Delivered high-impact content for leaders like Ravi Kishan Shukla, Kamaljeet Sehrawat, Ramvir Singh Bidhuri, and Faggan Singh Kulaste.</p>
         </div>
 
-        <div class="bento-card exp-card-3" onclick="openModal('modal-mp')">
-            <div class="click-hint">Click to view <i class="fas fa-expand"></i></div>
-            <h3 class="card-title">MP Assembly Election 2023</h3>
-            <p class="card-subtitle">Campaign Content | Indore</p>
-            <p class="card-desc">Contributed extensively to booth-level messaging, slogan creation, and rapid-response communication materials to heavily boost overall public engagement during the assembly elections...</p>
+        <div class="bento-card exp-card-4 interactive-card" onclick="openModal('modal-bihar')">
+            <div class="click-hint">View Details <i class="fas fa-expand"></i></div>
+            <h3 class="card-title">Bihar Assembly Elections</h3>
+            <p class="card-subtitle">Campaign Content & Scriptwriting (2025)</p>
+            <p class="card-desc">Conceptualized the viral <strong>"Chin Tapk Dum Dum"</strong> & <strong>"Jungal Raj files"</strong> series. Managed historic campaigns for key leaders including Maithili Thakur, Sujeet Paswan, and Rohit Pandey.</p>
         </div>
 
-        <div class="bento-card skills-card" style="cursor: default;">
-            <div class="skill-pill highlight"><i class="fas fa-pen-nib"></i> Hindi Political Scriptwriting</div>
-            <div class="skill-pill">SEO & Keyword Strategy</div>
-            <div class="skill-pill">Narrative Storytelling</div>
-            <div class="skill-pill">Governance & Policy Communication</div>
-            <div class="skill-pill highlight"><i class="fas fa-bullhorn"></i> Crisis Communication Support</div>
-            <div class="skill-pill">Data-Driven Content Optimization</div>
-            <div class="skill-pill">Brand Messaging & Positioning</div>
-            <div class="skill-pill">M.A & B.A (DDU Gorakhpur University)</div>
+        <div class="bento-card exp-card-5 interactive-card" onclick="openModal('modal-delhi')">
+            <div class="click-hint">View <i class="fas fa-expand"></i></div>
+            <h3 class="card-title">Delhi Assembly Elections</h3>
+            <p class="card-subtitle">Campaign Planning (2025)</p>
+            <p class="card-desc">Executed robust campaign plans and end-to-end messaging for Sandeep Sehrawat (Matiala) and Ravinder Indraj Singh (Bawana) to mobilize targeted on-ground political support.</p>
+        </div>
+
+        <div class="bento-card exp-card-6 interactive-card" onclick="openModal('modal-jharkhand')">
+            <div class="click-hint">View <i class="fas fa-expand"></i></div>
+            <h3 class="card-title">Jharkhand Assembly Elections</h3>
+            <p class="card-subtitle">MLA Campaign Management (2024)</p>
+            <p class="card-desc">Delivered high-impact campaign strategies focusing on the critical Mahagama constituency, along with providing overarching content support to multiple other MLAs.</p>
+        </div>
+
+        <div class="bento-card exp-card-3 interactive-card" onclick="openModal('modal-mp')">
+            <div class="click-hint">View <i class="fas fa-expand"></i></div>
+            <h3 class="card-title">MP Assembly Elections</h3>
+            <p class="card-subtitle">Strategic Content & Slogans (2023)</p>
+            <p class="card-desc">Contributed extensively to booth-level messaging, hard-hitting slogan creation, and rapid-response crisis communication materials across the Indore region.</p>
+        </div>
+
+        <div class="bento-card edu-card">
+            <h2 class="section-header"><i class="fas fa-graduation-cap"></i> Education</h2>
+            <div class="edu-flex">
+                <div class="edu-item">
+                    <div class="edu-degree">M.A. in Modern History</div>
+                    <div class="edu-uni"><i class="fas fa-university"></i> DDU Gorakhpur University | 2019 - 2021</div>
+                    <div class="edu-desc">Deep dive into modern historical narratives, political movements, and socio-economic transformations. Developed advanced research and critical analysis skills.</div>
+                </div>
+                <div class="edu-item">
+                    <div class="edu-degree">Bachelor of Arts (B.A.)</div>
+                    <div class="edu-uni"><i class="fas fa-university"></i> DDU Gorakhpur University | 2016 - 2019</div>
+                    <div class="edu-desc">Majors in History, Geography, and Political Science. Built a strong foundation in demographics, historical contexts, and grassroots political frameworks.</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="bento-card skills-card">
+            <h2 class="section-header"><i class="fas fa-bolt" style="color:#eab308;"></i> Core Competencies & Expertise</h2>
+            <div class="skills-container">
+                <div class="skill-pill highlight"><i class="fas fa-pen-nib"></i> Hindi Political Scriptwriting
+                    <div class="skill-tooltip"><strong>Experience Detail:</strong> Executed extensively during Lok Sabha and Assembly elections to craft highly persuasive, culturally resonant speeches tailored for top-tier political leaders.</div>
+                </div>
+                <div class="skill-pill">SEO & Keyword Strategy
+                    <div class="skill-tooltip"><strong>Experience Detail:</strong> Implemented data-driven optimization strategies to ensure political campaigns and governance milestones achieve maximum online visibility.</div>
+                </div>
+                <div class="skill-pill">Narrative Storytelling
+                    <div class="skill-tooltip"><strong>Experience Detail:</strong> Built engaging brand and political narratives from the ground up that connect with the masses on an emotional level.</div>
+                </div>
+                <div class="skill-pill">Governance Communication
+                    <div class="skill-tooltip"><strong>Experience Detail:</strong> Specialized in translating complex government policies, schemes, and milestones into accessible, impactful information for citizens.</div>
+                </div>
+                <div class="skill-pill highlight"><i class="fas fa-bullhorn"></i> Crisis Communication
+                    <div class="skill-tooltip"><strong>Experience Detail:</strong> Provided rapid response, damage control, and strategic messaging support to manage dynamic public narratives.</div>
+                </div>
+                <div class="skill-pill">Data-Driven Optimization
+                    <div class="skill-tooltip"><strong>Experience Detail:</strong> Continuously leveraged audience analytics and grassroots data insights to refine messaging and maximize voter engagement.</div>
+                </div>
+                <div class="skill-pill">Brand Messaging & Positioning
+                    <div class="skill-tooltip"><strong>Experience Detail:</strong> Established and maintained strong, consistent public images and messaging identities for notable political figures.</div>
+                </div>
+            </div>
         </div>
 
     </div>
@@ -235,16 +309,8 @@
             <p>Auburn Digital Solutions | 2025 - Present</p>
         </div>
         <div class="strategy-section">
-            <h4><i class="fas fa-bullseye"></i> The Objective</h4>
             <p>To design and deploy well-structured, impact-focused communication strategies that are completely in sync with the key governance priorities set by the Chief Minister's Office.</p>
-        </div>
-        <div class="strategy-section">
-            <h4><i class="fas fa-chess-knight"></i> Execution & Strategy</h4>
             <p>Orchestrated comprehensive content roadmaps spanning various digital platforms, public messaging channels, and policy broadcasts. Developed highly strategic narratives highlighting government schemes, key development milestones, and citizen-focused initiatives, all heavily backed by thorough research and precise audience analysis.</p>
-        </div>
-        <div class="strategy-section">
-            <h4><i class="fas fa-chart-line"></i> The Impact</h4>
-            <p>Successfully established a consistent, data-informed, and highly engaging content pipeline that dramatically strengthened public outreach while keeping strict alignment with the official communication objectives.</p>
         </div>
     </div>
 </div>
@@ -253,16 +319,110 @@
     <div class="modal-content">
         <button class="close-btn" onclick="closeModal('modal-ls')"><i class="fas fa-times"></i></button>
         <div class="modal-header">
-            <h3>Lok Sabha Election Campaigns</h3>
-            <p>Delhi | 2024</p>
+            <h3>Lok Sabha Elections 2024</h3>
+            <p>National Campaign Execution & Strategy</p>
         </div>
+        
         <div class="strategy-section">
-            <h4><i class="fas fa-bullseye"></i> Scope of Work</h4>
-            <p>Directed the overarching content and communication strategy for notable political figures including Ravi Kishan Shukla, Kamaljeet Sehrawat, Ramvir Singh Bidhuri, and MP Faggan Singh Kulaste during critical parliamentary campaigns.</p>
+            <h4><i class="fas fa-crown"></i> Yogender Chandoliya (North West Delhi)</h4>
+            <div class="campaign-item" style="border-color: #f87171;">
+                <h5><i class="fas fa-star" style="color:#f87171;"></i> End-to-End Campaign Management</h5>
+                <p>Spearheaded the complete end-to-end campaign strategy, narrative building, and on-ground execution. This meticulously planned campaign deeply resonated with the electorate, securing the highest winning margin in Delhi.</p>
+            </div>
         </div>
+
         <div class="strategy-section">
-            <h4><i class="fas fa-pen-fancy"></i> Content Execution</h4>
-            <p>Drafted compelling campaign speeches, hyper-localized constituency messaging, and dynamic social media content. Built research-backed narratives addressing crucial voter concerns and local development plans. Played a pivotal role in digital outreach planning, creative slogan generation, and agile rapid-response crisis communication to elevate overall campaign presence.</p>
+            <h4><i class="fas fa-map-marked-alt"></i> Key Leaders Managed</h4>
+            <div class="campaign-item" style="border-color: #38bdf8;">
+                <h5><i class="fas fa-bullseye" style="color:#38bdf8;"></i> Comprehensive Strategic Support</h5>
+                <p>Delivered highly targeted digital outreach, campaign speech writing, and localized messaging for leading figures including <strong>Ravi Kishan Shukla</strong> (Gorakhpur), <strong>Kamaljeet Sehrawat</strong> (West Delhi), <strong>Ramvir Singh Bidhuri</strong> (South Delhi), and <strong>Faggan Singh Kulaste</strong> (Mandla). Engineered research-backed narratives addressing crucial voter concerns to elevate overall campaign presence.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal-overlay" id="modal-bihar">
+    <div class="modal-content">
+        <button class="close-btn" onclick="closeModal('modal-bihar')"><i class="fas fa-times"></i></button>
+        <div class="modal-header">
+            <h3>Bihar Assembly Elections</h3>
+            <p>Campaign Content & Scriptwriting | 2025</p>
+        </div>
+        
+        <div class="strategy-section">
+            <h4><i class="fas fa-users"></i> Key Candidate Campaigns</h4>
+            
+            <div class="campaign-item" style="border-color: #f59e0b;">
+                <h5><i class="fas fa-microphone-alt" style="color:#f59e0b;"></i> Maithili Thakur (Alinagar Vidhansabha)</h5>
+                <p>Crafted tailored campaign scripts and strategic digital messaging to deeply resonate with the local electorate and boost the candidate's public connection.</p>
+            </div>
+
+            <div class="campaign-item" style="border-color: #10b981;">
+                <h5><i class="fas fa-bullhorn" style="color:#10b981;"></i> Sujeet Paswan (Rajnagar Vidhansabha)</h5>
+                <p>Managed grassroots content optimization and strategic communication to maximize ground-level voter engagement and trust.</p>
+            </div>
+
+            <div class="campaign-item" style="border-color: #38bdf8;">
+                <h5><i class="fas fa-flag" style="color:#38bdf8;"></i> Rohit Pandey (Bhagalpur)</h5>
+                <p>Spearheaded the content narrative and communication strategy that played a pivotal role in securing a historic, first-time victory for the BJP in this constituency.</p>
+            </div>
+        </div>
+
+        <div class="strategy-section">
+            <h4><i class="fas fa-fire"></i> Viral Content & Script Series</h4>
+            
+            <div class="campaign-item" style="border-color: #ec4899;">
+                <h5><i class="fas fa-play-circle" style="color:#ec4899;"></i> "Chin Tapk Dum Dum" Series</h5>
+                <p>Conceptualized and authored this unique, culturally resonant digital series that went completely viral, driving massive mass engagement across all major social platforms.</p>
+            </div>
+
+            <div class="campaign-item" style="border-color: #f43f5e;">
+                <h5><i class="fas fa-folder-open" style="color:#f43f5e;"></i> "Jungal Raj Files" Series</h5>
+                <p>Delivered a hard-hitting, heavily data-backed script and narrative series that strongly influenced the political discourse and strategically exposed key opposition flaws.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal-overlay" id="modal-delhi">
+    <div class="modal-content">
+        <button class="close-btn" onclick="closeModal('modal-delhi')"><i class="fas fa-times"></i></button>
+        <div class="modal-header">
+            <h3>Delhi Assembly Elections</h3>
+            <p>Campaign Strategy & Execution | 2025</p>
+        </div>
+        
+        <div class="strategy-section">
+            <h4><i class="fas fa-map-marker-alt"></i> Key Campaigns Managed</h4>
+            
+            <div class="campaign-item" style="border-color: #06b6d4;">
+                <h5><i class="fas fa-user-tie" style="color:#06b6d4;"></i> Sandeep Sehrawat (Matiala Vidhan Sabha)</h5>
+                <p>Designed and deployed highly targeted campaign strategies. Handled end-to-end messaging, digital outreach plans, and voter engagement scripts customized for the Matiala electorate.</p>
+            </div>
+
+            <div class="campaign-item" style="border-color: #3b82f6;">
+                <h5><i class="fas fa-bullseye" style="color:#3b82f6;"></i> Ravinder Indraj Singh (Bawana Vidhan Sabha)</h5>
+                <p>Formulated robust campaign plans tailored for the Bawana constituency. Focused on local issues, narrative building, and mobilizing on-ground political support through effective content strategy.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal-overlay" id="modal-jharkhand">
+    <div class="modal-content">
+        <button class="close-btn" onclick="closeModal('modal-jharkhand')"><i class="fas fa-times"></i></button>
+        <div class="modal-header">
+            <h3>Jharkhand Assembly Elections</h3>
+            <p>MLA Campaign Management | 2024</p>
+        </div>
+        
+        <div class="strategy-section">
+            <h4><i class="fas fa-layer-group"></i> Strategic Rollout</h4>
+            
+            <div class="campaign-item" style="border-color: #ec4899;">
+                <h5><i class="fas fa-map" style="color:#ec4899;"></i> Mahagama Constituency & Multiple MLAs</h5>
+                <p>Executed extensive campaign strategies not only for the critical Mahagama constituency but also provided overarching content and messaging support for multiple other MLA campaigns across Jharkhand. Driven by strong data analysis to secure maximum voter turnout and engagement.</p>
+            </div>
         </div>
     </div>
 </div>
@@ -275,13 +435,8 @@
             <p>Indore | 2023</p>
         </div>
         <div class="strategy-section">
-            <h4><i class="fas fa-users"></i> Target Audience & Clients</h4>
             <p>Delivered strategic communication and content support for prominent leaders such as Sanjay Satyendra Pathak, Bhagwan Das Sabnani, and Arvind Singh Bhadauria.</p>
-        </div>
-        <div class="strategy-section">
-            <h4><i class="fas fa-layer-group"></i> Strategic Rollout</h4>
-            <p>Conceptualized and delivered high-impact campaign speeches, tailored regional messaging, and robust digital content. Engineered research-heavy narratives targeting primary voter priorities and spearheaded digital expansion efforts. Actively contributed to grassroots booth-level communication, impactful slogan writing, and immediate rapid-response actions to maximize voter mobilization.</p>
-            <p style="margin-top: 10px; color: var(--accent);"><em>*Extended similar high-level strategic support during the Jharkhand (2024) and Delhi Assembly Elections (2025).</em></p>
+            <p>Conceptualized and delivered high-impact campaign speeches, tailored regional messaging, and robust digital content. Engineered research-heavy narratives targeting primary voter priorities and spearheaded digital expansion efforts.</p>
         </div>
     </div>
 </div>
